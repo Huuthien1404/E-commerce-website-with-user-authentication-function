@@ -1,0 +1,130 @@
+<style>
+    .gradient-custom {
+        /* fallback for old browsers */
+        background: #6a11cb;
+
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+    }
+    #dn{
+        transition: all 0.2s linear;
+    }
+    #dn:hover{
+        background-color: white;
+    }
+    #passwordLogin,
+    #usernameLogin{
+        cursor: pointer;
+    }
+    #usernameLogin:not(:placeholder-shown) +.tdn,
+    #usernameLogin:focus + .tdn{
+        top:0;
+        font-size: 1rem;
+        padding: 0;
+        font-weight: 600;
+        z-index: 1;
+        color: red;
+    }
+    #usernameLogin:focus{
+        border-color: red;
+    }
+    #passwordLogin:focus{
+        border-color: red;
+    }
+    .mk,
+    .tdn{
+        position: absolute;
+        top:50%;
+        left: 0;
+        color: black;
+        font-size: 1.25rem;
+        margin-left: 1.05rem;
+        user-select: none;
+        transform: translateY(-55%);
+        color: #6C757D;
+        transition: all 0.25s linear;
+        display: inline-block;
+        pointer-events: none;
+    }
+    .mkLogin,
+    .namelogin{
+        position: relative;
+    }
+    #passwordLogin,
+    #usernameLogin{
+        box-shadow: none;
+    }
+    #passwordLogin:not(:placeholder-shown) +.mk,
+    #passwordLogin:focus + .mk{
+        top:0;
+        font-size: 1rem;
+        padding: 0;
+        font-weight: 600;
+        z-index: 1;
+        color: red;
+    }
+</style>
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <form action="/users/login" class="formLoginSubmit" method="post"
+                            onsubmit="event.preventDefault(); handleSubmitFormLogin()">
+                            <div class="mb-md-5 mt-md-4 pb-5">
+
+                                <h2 class="fw-bold mb-2 text-uppercase">Đăng nhập</h2>
+                                <p class="text-white-50 mb-5">Hãy nhập tên đăng nhập và mật khẩu của bạn!</p>
+                                <h3 style="margin-top: -2rem; margin-bottom: 2rem;">{{messages.error}}</h3>
+                                <div class="form-outline form-white mb-4">
+                                    <div class="namelogin">
+                                        <input type="text" id="usernameLogin" class="form-control form-control-lg"
+                                        placeholder=" " name="usernameLogin"
+                                        oninput="handleOnInputUsernameLogin()" autocomplete="off">
+                                        <label for="tdn" class="tdn">Tên đăng nhập</label>
+                                    </div>
+                                    
+                                    <label class="form-label" for="typeEmailX" id="warningUsernameLogin"></label>
+                                </div>
+
+                                <div class="form-outline form-white mb-4">
+                                    <div class="mkLogin">
+                                        <input type="password" id="passwordLogin" class="form-control form-control-lg"
+                                        placeholder=" " name="passwordLogin"
+                                        oninput="handleOnInputPasswordLogin()">
+                                        <label for="mk" class="mk">Mật khẩu</label>
+                                    </div>
+                                    <label class="form-label" for="typePasswordX" id="warningPasswordLogin"></label>
+                                </div>
+                                <div class="form-check" style="margin-bottom: 2rem;">
+                                    <input class="form-check-input" type="checkbox" value="" id="form2Example31"
+                                        checked  name="rememberMe"/>
+                                    <label class="form-check-label" for="form2Example31" style="margin-left: -16rem;"> Ghi nhớ đăng nhập </label>
+                                </div>
+                                <button class="btn btn-outline-light btn-lg px-5" type="submit" id="dn">Đăng nhập</button>
+                                <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                                    <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                                    <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                                    <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+                                </div>
+
+                            </div>
+                        </form>
+                        <div>
+                            <p class="mb-0">Bạn chưa có tài khoản? <a href="/users/register"
+                                    class="text-white-50 fw-bold">Đăng ký ngay</a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{{messages.notification}}}

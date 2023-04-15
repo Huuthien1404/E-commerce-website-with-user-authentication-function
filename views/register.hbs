@@ -1,0 +1,140 @@
+<style>
+    .gradient-custom-3 {
+        /* fallback for old browsers */
+        background: #84fab0;
+
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+    }
+
+    .gradient-custom-4 {
+        /* fallback for old browsers */
+        background: #84fab0;
+
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+    }
+    #dk:hover{
+        background: linear-gradient(to bottom, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));   
+    }
+    #repRegister,
+    #pasRegister,
+    #emRegister,
+    #nameRegister{
+        position: relative;
+    }
+    #label-repeat-register,
+    #label-pass-register,
+    #label-email-register,
+    #label-name-register{
+        position: absolute;
+        top:50%;
+        left: 0;
+        color: black;
+        font-size: 1.25rem;
+        margin-left: 1.05rem;
+        user-select: none;
+        transform: translateY(-50%);
+        color: #6C757D;
+        transition: all 0.25s linear;
+        display: inline-block;
+        pointer-events: none;
+    }
+    #passwordRegisterRepeat,
+    #passwordRegister,
+    #emailRegister:focus,
+    #usernameRegister:focus{
+        box-shadow: none;
+    }
+    #usernameRegister:not(:placeholder-shown) + #label-name-register,
+    #usernameRegister:focus + #label-name-register{
+        top:0;
+        background-color: white;
+        padding: 0 0.5rem;
+        font-size: 1rem;
+    }
+    #emailRegister:not(:placeholder-shown) + #label-email-register,
+    #emailRegister:focus + #label-email-register{
+        top:0;
+        background-color: white;
+        padding: 0 0.5rem;
+        font-size: 1rem;
+    }
+    #passwordRegister:not(:placeholder-shown) + #label-pass-register,
+    #passwordRegister:focus + #label-pass-register{
+        top:0;
+        background-color: white;
+        padding: 0 0.5rem;
+        font-size: 1rem;
+    }
+    #passwordRegisterRepeat:not(:placeholder-shown) + #label-repeat-register,
+    #passwordRegisterRepeat:focus + #label-repeat-register{
+        top:0;
+        background-color: white;
+        padding: 0 0.5rem;
+        font-size: 1rem;
+    }
+</style>
+<section class="vh-100 bg-image"
+    style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-5">Đăng ký</h2>
+                            <h3>{{message}}</h3>
+                            <form method="post" action="/users/register"
+                                onsubmit="event.preventDefault(); handleSubmitRegisterForm()" class="formRegister">
+
+                                <div class="form-outline mb-4" id="nameRegister">
+                                    <input type="text" id="usernameRegister" class="form-control form-control-lg"
+                                        name="usernameRegister" oninput="handleOnInputUsernameRegister()" placeholder=" " autocomplete="off" required/>
+                                    <label class="form-label" for="form3Example1cg" id="label-name-register">Tên đăng nhập</label>
+                                </div>
+
+                                <div class="form-outline mb-4" id="emRegister">
+                                    <input type="email" id="emailRegister" class="form-control form-control-lg"
+                                        name="emailRegister" oninput="handleOnInputEmailRegister()" placeholder=" " autocomplete="off" required/>
+                                    <label class="form-label" for="form3Example3cg" id="label-email-register">Email</label>
+                                </div>
+
+                                <div class="form-outline mb-4" id="pasRegister">
+                                    <input type="password" id="passwordRegister" class="form-control form-control-lg"
+                                        name="passwordRegister" oninput="handleOnInputPasswordRegister()" placeholder=" " required/>
+                                    <label class="form-label" for="form3Example4cg" id="label-pass-register">Mật khẩu</label>
+                                </div>
+
+                                <div class="form-outline mb-4" id="repRegister">
+                                    <input type="password" id="passwordRegisterRepeat"
+                                        class="form-control form-control-lg" name="passwordRegisterRepeat"
+                                        oninput="handleOnInputPasswordRegisterRepeat()" placeholder=" " required/>
+                                    <label class="form-label" for="form3Example4cdg" id="label-repeat-register">Nhập lại mật khẩu</label>
+                                </div>
+
+
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" id="dk"
+                                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" style="transition: all 0.25s linear;">Đăng
+                                        ký</button>
+                                </div>
+
+                                <p class="text-center text-muted mt-5 mb-0">Bạn đã có tài khoản? <a href="/users/login"
+                                        class="fw-bold text-body"><u>Đăng nhập tại đây</u></a></p>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
